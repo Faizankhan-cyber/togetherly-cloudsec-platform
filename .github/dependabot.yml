@@ -1,0 +1,16 @@
+version: 2
+updates:
+  # Python dependencies for the V1 assessment engine.
+  # Dependabot will begin scanning when a supported manifest is added.
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 5
+
+  # Keep GitHub Actions workflow dependencies current.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 5

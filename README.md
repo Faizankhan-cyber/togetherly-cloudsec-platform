@@ -7,29 +7,29 @@
 <p align="center"><strong>A hands-on cloud security engineering project built around the Togetherly Workforce application.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/Faizankhan-cyber/togetherly-cloudsec-platform"><img src="https://img.shields.io/github/last-commit/Faizankhan-cyber/togetherly-cloudsec-platform?style=for-the-badge&color=7c6cf0" alt="Last commit"></a>
+  <a href="https://github.com/Faizankhan-cyber/togetherly-cloudsec-platform"><img src="https://img.shields.io/github/last-commit/Faizankhan-cyber/togetherly-cloudsec-platform?style=for-the-badge&color=3976d8" alt="Last commit"></a>
   <a href="https://github.com/Faizankhan-cyber/togetherly-cloudsec-platform/issues"><img src="https://img.shields.io/github/issues/Faizankhan-cyber/togetherly-cloudsec-platform?style=for-the-badge&color=2596be" alt="Issues"></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/Faizankhan-cyber/togetherly-cloudsec-platform?style=for-the-badge&color=2e9d72" alt="License"></a>
   <img src="https://img.shields.io/badge/Status-V1%20in%20progress-8b5cf6?style=for-the-badge" alt="Project status">
 </p>
 
 <p align="center">
-  <a href="#-project-overview">Overview</a> ·
-  <a href="#-the-five-version-roadmap">Roadmap</a> ·
-  <a href="#-certification-roadmap">Certifications</a> ·
-  <a href="#-technology-stack">Tech stack</a> ·
-  <a href="docs/PROJECT_ROADMAP.md">Full roadmap</a>
+  <a href="#project-overview">Overview</a> ·
+  <a href="#architecture">Architecture</a> ·
+  <a href="#project-roadmap">Roadmap</a> ·
+  <a href="#certification-roadmap">Certifications</a> ·
+  <a href="docs/V1_PROGRESS.md">V1 progress</a>
 </p>
 
 ---
 
-## 🎯 Project overview
+## Project overview
 
 Togetherly CloudSec Platform is a long-term portfolio project focused on assessing and securing the existing **Togetherly Workforce** application, then gradually extending it with cloud identity, infrastructure automation, threat detection, and enterprise security controls.
 
 The goal is to demonstrate practical engineering through working tools, secure configurations, infrastructure code, tests, architecture diagrams, and clear technical reports.
 
-> **Assess → Secure → Integrate → Automate → Detect → Improve**
+**Assess → Secure → Integrate → Automate → Detect → Improve**
 
 ### Why this project?
 
@@ -39,7 +39,54 @@ The goal is to demonstrate practical engineering through working tools, secure c
 - Follows a staged path instead of moving everything to the cloud at once.
 - Connects each project stage to the skills being developed through certifications.
 
-## 🧭 The five-version roadmap
+## Architecture
+
+The diagram separates the **existing application** from the **planned security engineering layers**. Azure services and the Python assessment engine are planned additions, not claims about the current production deployment.
+
+```mermaid
+flowchart TB
+    subgraph APP["Existing Togetherly Workforce"]
+      U["Users and workforce roles"]
+      FE["React · TypeScript · Vite"]
+      AUTH["Supabase Auth"]
+      DB[("Supabase PostgreSQL · RLS")]
+      ST["Supabase Storage"]
+      EF["Supabase Edge Functions"]
+      HOST["Vercel hosting"]
+      U --> FE
+      FE --> AUTH
+      FE --> DB
+      FE --> ST
+      FE --> EF
+      FE --> HOST
+    end
+
+    subgraph V1["V1 · Security Foundation"]
+      PY["Python security assessment engine"]
+      TH["STRIDE threat model · OWASP review"]
+      FIND["Findings · remediation · tests · report"]
+      PY --> TH --> FIND
+    end
+
+    subgraph CLOUD["Planned cloud security layers · V2–V5"]
+      ENTRA["Microsoft Entra ID · OAuth/OIDC"]
+      AZ["Azure RBAC · Key Vault · networking"]
+      IAC["Terraform · Bicep · GitHub Actions"]
+      SOC["Azure Monitor · Log Analytics · Sentinel · KQL"]
+      GOV["Policy · governance · backup · recovery"]
+      ENTRA --> AZ --> IAC --> SOC --> GOV
+    end
+
+    GH["GitHub repository · issues · pull requests · CI"]
+    GH -. source and change control .-> V1
+    GH -. automation workflows .-> IAC
+    APP -. authorised assessment scope .-> PY
+    FIND --> GH
+```
+
+See the [architecture source and design notes](docs/architecture/system-context.md) for scope, trust boundaries, and planned integrations.
+
+## Project roadmap
 
 | Version | Focus | Planned engineering outcome |
 |:--:|---|---|
@@ -49,27 +96,52 @@ The goal is to demonstrate practical engineering through working tools, secure c
 | **V4** | **Security Operations** | Azure Monitor, Log Analytics, Microsoft Sentinel, KQL, Defender for Cloud, and incident investigation |
 | **V5** | **Enterprise Architecture** | Azure Policy, governance, backup and recovery, disaster recovery, and Zero Trust architecture |
 
+### Version details
+
 <details>
-<summary><strong>What each version will cover</strong></summary>
+<summary><strong>V1 · Security Foundation</strong></summary>
 
-### V1 · Security Foundation
 Build a local Python security assessment engine, map the application architecture, perform STRIDE threat modelling, review relevant OWASP risks, validate findings, and document remediation.
+</details>
+<details>
+<summary><strong>V2 · Identity & Cloud Security</strong></summary>
 
-### V2 · Identity & Cloud Security
 Design and test Microsoft Entra ID integration, OAuth/OIDC, application role mapping, Azure RBAC, Managed Identities, and Key Vault. Application-level authorisation and database Row Level Security must remain in place.
+</details>
+<details>
+<summary><strong>V3 · Infrastructure & DevSecOps</strong></summary>
 
-### V3 · Infrastructure & DevSecOps
 Create repeatable infrastructure using Terraform and Bicep, build Azure networking controls, and add GitHub Actions validation and controlled deployment workflows.
+</details>
+<details>
+<summary><strong>V4 · Security Operations</strong></summary>
 
-### V4 · Security Operations
 Build log collection and KQL investigations, then add Sentinel detections, alerting, and incident response exercises. Review service costs before enabling paid ingestion or security plans.
+</details>
+<details>
+<summary><strong>V5 · Enterprise Architecture</strong></summary>
 
-### V5 · Enterprise Architecture
 Complete governance, Azure Policy, backup and restore testing, disaster recovery planning, Zero Trust assessment, and final architecture documentation.
-
 </details>
 
-## 🎓 Certification roadmap
+The detailed stage gates and certification mapping are in [PROJECT_ROADMAP.md](docs/PROJECT_ROADMAP.md).
+
+## V1 progress
+
+<sub>Live checklist: update this as implementation and evidence are completed.</sub>
+
+- [x] Initial review of GitHub security settings, Supabase Auth/RLS, storage, Edge Functions, and deployment configuration
+- [x] Document selected baseline improvements and live verification
+- [ ] Map the full application architecture and trust boundaries
+- [ ] Build the Python security assessment engine
+- [ ] Complete the STRIDE threat model and relevant OWASP review
+- [ ] Produce structured findings with severity, evidence, and remediation
+- [ ] Validate fixes with repeatable tests
+- [ ] Publish the V1 security baseline report
+
+See [V1_PROGRESS.md](docs/V1_PROGRESS.md) for task-level acceptance criteria. V2–V5 remain planned.
+
+## Certification roadmap
 
 Certifications support the learning behind each version. They do **not** count as project completion by themselves.
 
@@ -88,22 +160,9 @@ Certifications support the learning behind each version. They do **not** count a
 | Final year | **AZ-305** · Azure Solutions Architect Expert | V5 enterprise architecture |
 | Final year | **AWS Certified Security – Specialty** | Advanced cloud security for V4/V5 |
 
-<details>
-<summary><strong>Certification-to-version alignment</strong></summary>
-
-| Project version | Supporting certifications and skills |
-|---|---|
-| V1 · Security Foundation | DataCamp Python, Bash, PowerShell |
-| V2 · Identity & Cloud Security | AZ-900, AZ-104, SC-500, GH-900 |
-| V3 · Infrastructure & DevSecOps | Terraform Associate (004), AZ-104, AWS CLF-C02, AWS SAA-C03 |
-| V4 · Security Operations | SC-500, AZ-104, AWS Security Specialty |
-| V5 · Enterprise Architecture | AZ-305, AWS Security Specialty, AWS SAA-C03 |
-
-</details>
-
 **Planning note:** These are target milestones, not claims that the exams have already been passed. Dates may change with exam availability and college schedules.
 
-## 🧰 Technology stack
+## Technology stack
 
 <p>
   <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
@@ -113,7 +172,6 @@ Certifications support the learning behind each version. They do **not** count a
   <img src="https://img.shields.io/badge/Bicep-0078D4?style=flat-square&logo=microsoftazure&logoColor=white" alt="Bicep">
   <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white" alt="GitHub Actions">
   <img src="https://img.shields.io/badge/Microsoft_Sentinel-5E5E5E?style=flat-square&logo=microsoft&logoColor=white" alt="Microsoft Sentinel">
-  <img src="https://img.shields.io/badge/KQL-0078D4?style=flat-square&logo=microsoftazure&logoColor=white" alt="KQL">
 </p>
 
 The existing Togetherly Workforce application currently uses:
@@ -128,43 +186,18 @@ The existing Togetherly Workforce application currently uses:
 
 Azure services will be introduced in controlled stages. The existing application will not be migrated without a clear technical reason and a reviewed implementation plan.
 
-## 📍 Current progress
+## Evidence and documentation
 
-<kbd>V1 · Security Foundation</kbd> <strong>In progress</strong>
+Project evidence is organised by type under [evidence/](evidence/README.md):
 
-Initial security groundwork has been completed on the Togetherly application, including reviews of GitHub security settings, Supabase authentication and RLS, storage, Edge Functions, and deployment configuration. Selected improvements have been applied and documented.
+- Architecture diagrams and design decisions
+- Security assessment reports and findings
+- Test results and validation output
+- Remediation records and verification
 
-**Still to build in V1:**
-- Python security assessment engine
-- Full application threat model
-- Structured security assessment and findings
-- Remediation validation and tests
-- Final security baseline report
+Only sanitised, non-sensitive evidence belongs in this repository. Never commit real user data, credentials, tokens, private keys, or unredacted production logs.
 
-**V2–V5 are planned stages. They are not complete.**
-
-## 🗂️ Repository structure
-
-```text
-togetherly-cloudsec-platform/
-├── assets/
-│   └── cloudsec-logo.svg
-├── docs/
-│   └── PROJECT_ROADMAP.md
-├── V1-security-foundation/
-├── V2-identity-cloud-security/
-├── V3-infrastructure-devsecops/
-├── V4-security-operations/
-├── V5-enterprise-architecture/
-├── .gitignore
-├── LICENSE
-├── README.md
-└── SECURITY.md
-```
-
-Implementation folders will be populated as each stage begins.
-
-## 🔐 Engineering principles
+## Engineering principles
 
 - Inspect before changing anything.
 - Work in small, testable steps and use Git branches and pull requests.
@@ -174,11 +207,14 @@ Implementation folders will be populated as each stage begins.
 - Never commit passwords, API keys, tokens, private keys, or sensitive data.
 - Estimate Azure costs before deployment and remove temporary resources after testing.
 
-## 🔗 Project links
+## Project links
 
 - **Case-study application:** [Togetherly Workforce](https://togetherly-tinyfish.vercel.app/)
 - **Application source:** [togetherly-workforce](https://github.com/Faizankhan-cyber/togetherly-workforce)
 - **Detailed project and certification roadmap:** [PROJECT_ROADMAP.md](docs/PROJECT_ROADMAP.md)
+- **Security policy:** [SECURITY.md](SECURITY.md)
+- **V1 progress tracker:** [V1_PROGRESS.md](docs/V1_PROGRESS.md)
+- **Architecture design:** [system-context.md](docs/architecture/system-context.md)
 
 ---
 
