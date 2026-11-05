@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="220" viewBox="0 0 900 220" role="img" aria-labelledby="title desc">
+<title id="title">Togetherly CloudSec Platform</title>
+<desc id="desc">A shield and cloud symbol representing cloud security engineering.</desc>
+<defs>
+  <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#54c7ff"/><stop offset="1" stop-color="#9875ff"/></linearGradient>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#111827"/><stop offset="1" stop-color="#17112e"/></linearGradient>
+</defs>
+<rect width="900" height="220" rx="24" fill="url(#bg)"/>
+<circle cx="112" cy="110" r="76" fill="#202747" opacity=".65"/>
+<path d="M112 43 165 63v43c0 37-22 61-53 76-31-15-53-39-53-76V63z" fill="none" stroke="url(#g)" stroke-width="8" stroke-linejoin="round"/>
+<path d="M79 112c-12-2-17-17-7-26 5-5 12-6 18-3 4-16 28-20 37-5 13-2 23 9 20 21 11 7 8 25-6 27H83c-10 0-15-7-14-14 1-5 5-8 10-9z" fill="none" stroke="#e7edff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="100" y="111" width="25" height="20" rx="4" fill="#9875ff"/>
+<path d="M106 111v-7a6 6 0 0 1 13 0v7" fill="none" stroke="#9875ff" stroke-width="5"/>
+<text x="220" y="101" fill="#f8fafc" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="48" font-weight="700">Togetherly</text>
+<text x="220" y="153" fill="url(#g)" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="38" font-weight="700">CloudSec Platform</text>
+<text x="222" y="184" fill="#aab6d3" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" letter-spacing="3">CLOUD SECURITY ENGINEERING</text>
+</svg>
